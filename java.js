@@ -69,7 +69,7 @@ if (canvas) {
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 255, 136, ${this.opacity})`;
+      ctx.fillStyle = `rgba(${window.currentAccent || '212, 175, 55'}, ${this.opacity})`;
       ctx.fill();
     }
   }
@@ -86,7 +86,7 @@ if (canvas) {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(0, 255, 136, ${0.04 * (1 - dist / 150)})`;
+          ctx.strokeStyle = `rgba(${window.currentAccent || '212, 175, 55'}, ${0.04 * (1 - dist / 150)})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
@@ -244,13 +244,23 @@ document.addEventListener('keydown', (e) => {
 /* ========== CONTACT FORM ========== */
 function handleSubmit(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  btn.textContent = '✓ Message Sent!';
-  btn.style.background = 'linear-gradient(135deg, #00cc6a, #00b4d8)';
+  const form = e.target;
+  const name = form.querySelector('input[type="text"]').value;
+  const email = form.querySelector('input[type="email"]').value;
+  const message = form.querySelector('textarea').value;
+  
+  const subject = encodeURIComponent(`Contact from Portfolio - ${name}`);
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+  
+  window.location.href = `mailto:fadlansyahrullohajib@gmail.com?subject=${subject}&body=${body}`;
+
+  const btn = form.querySelector('button[type="submit"]');
+  btn.textContent = '✓ Opening Email Client!';
+  btn.style.background = 'linear-gradient(135deg, var(--neon-green), var(--beige-light))';
   setTimeout(() => {
     btn.textContent = 'Send Message →';
     btn.style.background = '';
-    e.target.reset();
+    form.reset();
   }, 3000);
 }
 
@@ -277,5 +287,38 @@ if (profileImg) {
     wrap.style.borderRadius = '16px';
     wrap.style.fontSize = '72px';
     wrap.innerHTML = '<span style="opacity:0.3">👨‍💻</span>';
+  });
+}
+
+/* ========== THEME TOGGLE ========== */
+const themeToggleBtn = document.getElementById('themeToggle');
+const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('.icon') : null;
+
+function setTheme(isLight) {
+  if (isLight) {
+    document.body.classList.add('light-mode');
+    if (themeIcon) themeIcon.textContent = '🌙';
+    localStorage.setItem('theme', 'light');
+    window.currentAccent = '184, 153, 71';
+  } else {
+    document.body.classList.remove('light-mode');
+    if (themeIcon) themeIcon.textContent = '☀️';
+    localStorage.setItem('theme', 'dark');
+    window.currentAccent = '212, 175, 55';
+  }
+}
+
+// Initialize theme from localStorage
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'light') {
+  setTheme(true);
+} else {
+  setTheme(false); // default dark
+}
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', () => {
+    const isLight = document.body.classList.contains('light-mode');
+    setTheme(!isLight);
   });
 }
