@@ -1,9 +1,12 @@
 /* ========== LOADING SCREEN ========== */
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('hidden');
-  }, 2200);
-});
+// Fallback timeout to ensure loading screen always disappears
+const hideLoader = () => {
+  const loader = document.getElementById('loader');
+  if (loader) loader.classList.add('hidden');
+};
+
+window.addEventListener('load', () => setTimeout(hideLoader, 500));
+setTimeout(hideLoader, 2500); // Failsafe timeout after 2.5s
 
 /* ========== CUSTOM CURSOR ========== */
 const cursor = document.getElementById('cursor');
