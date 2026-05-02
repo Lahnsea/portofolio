@@ -12,26 +12,29 @@ setTimeout(hideLoader, 2500); // Failsafe timeout after 2.5s
 const cursor = document.getElementById('cursor');
 const follower = document.getElementById('cursorFollower');
 let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
+const isMobile = window.innerWidth < 768;
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-  if (cursor) {
-    cursor.style.left = mouseX - 4 + 'px';
-    cursor.style.top = mouseY - 4 + 'px';
-  }
-});
+if (!isMobile) {
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (cursor) {
+      cursor.style.left = mouseX - 4 + 'px';
+      cursor.style.top = mouseY - 4 + 'px';
+    }
+  });
 
-function animateFollower() {
-  followerX += (mouseX - followerX) * 0.12;
-  followerY += (mouseY - followerY) * 0.12;
-  if (follower) {
-    follower.style.left = followerX - 17.5 + 'px';
-    follower.style.top = followerY - 17.5 + 'px';
+  function animateFollower() {
+    followerX += (mouseX - followerX) * 0.12;
+    followerY += (mouseY - followerY) * 0.12;
+    if (follower) {
+      follower.style.left = followerX - 17.5 + 'px';
+      follower.style.top = followerY - 17.5 + 'px';
+    }
+    requestAnimationFrame(animateFollower);
   }
-  requestAnimationFrame(animateFollower);
+  animateFollower();
 }
-animateFollower();
 
 // Hover effect on interactive elements
 document.querySelectorAll('a, button, .project-card, .skill-card, .contact-link, .filter-btn').forEach(el => {
@@ -41,7 +44,7 @@ document.querySelectorAll('a, button, .project-card, .skill-card, .contact-link,
 
 /* ========== PARTICLE BACKGROUND ========== */
 const canvas = document.getElementById('particles-canvas');
-if (canvas) {
+if (canvas && !isMobile) {
   const ctx = canvas.getContext('2d');
   let particles = [];
   const PARTICLE_COUNT = 80;
@@ -106,30 +109,7 @@ if (canvas) {
   animateParticles();
 }
 
-/* ========== TYPING ANIMATION ========== */
-const typingEl = document.getElementById('typing-text');
-const roles = ['Fullstack Developer', 'AI Engineer', 'Flutter Developer'];
-let roleIndex = 0, charIndex = 0, isDeleting = false;
 
-function typeEffect() {
-  const current = roles[roleIndex];
-  if (typingEl) {
-    typingEl.textContent = isDeleting
-      ? current.substring(0, charIndex--)
-      : current.substring(0, charIndex++);
-
-    if (!isDeleting && charIndex > current.length) {
-      setTimeout(() => { isDeleting = true; typeEffect(); }, 1800);
-      return;
-    }
-    if (isDeleting && charIndex < 0) {
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-    }
-  }
-  setTimeout(typeEffect, isDeleting ? 40 : 90);
-}
-typeEffect();
 
 /* ========== NAVBAR SCROLL ========== */
 const navbar = document.getElementById('navbar');
@@ -245,26 +225,29 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ========== CONTACT FORM ========== */
-function handleSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const name = form.querySelector('input[type="text"]').value;
-  const email = form.querySelector('input[type="email"]').value;
-  const message = form.querySelector('textarea').value;
-  
-  const subject = encodeURIComponent(`Contact from Portfolio - ${name}`);
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-  
-  window.location.href = `mailto:fadlansyahrullohajib@gmail.com?subject=${subject}&body=${body}`;
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('contactName').value;
+    const email = document.getElementById('contactEmail').value;
+    const message = document.getElementById('contactMessage').value;
+    
+    const subject = encodeURIComponent(`Contact from Portfolio - ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    
+    window.location.href = `mailto:fadlansyahrullohajib@gmail.com?subject=${subject}&body=${body}`;
 
-  const btn = form.querySelector('button[type="submit"]');
-  btn.textContent = '✓ Opening Email Client!';
-  btn.style.background = 'linear-gradient(135deg, var(--neon-green), var(--beige-light))';
-  setTimeout(() => {
-    btn.textContent = 'Send Message →';
-    btn.style.background = '';
-    form.reset();
-  }, 3000);
+    const btn = contactForm.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = '✓ Opening Email Client!';
+    btn.style.background = 'linear-gradient(135deg, var(--accent-gold), var(--beige-light))';
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.background = '';
+      contactForm.reset();
+    }, 3000);
+  });
 }
 
 /* ========== SMOOTH SCROLL FOR ALL ANCHORS ========== */
