@@ -26,11 +26,12 @@
 
   <!-- Navbar -->
   <nav class="navbar" id="navbar">
-    <a href="#" class="nav-logo">F<span style="color: var(--accent-gold);">A</span></a>
+    <a href="#" class="nav-logo">FADLAM<span style="color: var(--accent-primary);">S.A</span></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#certificates">Certificates</a></li>
       <li><a href="#journey">Journey</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -48,14 +49,23 @@
   <section class="hero" id="hero">
     <canvas id="particles-canvas"></canvas>
     <div class="hero-gradient"></div>
-    <div class="hero-content">
-      <div class="hero-badge">Available for opportunities</div>
-      <h1>Fadlan Syahrullah Ajib</h1>
-      <h2 class="hero-subheadline gradient-text">Software Engineer | Full-Stack & AI</h2>
-      <p class="hero-desc">Architecting scalable cross-platform applications and integrating machine learning solutions. Focused on clean architecture, performance, and seamless user experiences.</p>
-      <div class="hero-buttons">
-        <a href="#projects" class="btn btn-primary">⬡ View Projects</a>
-        <a href="#contact" class="btn btn-outline">Contact Me →</a>
+    <div class="hero-container">
+      <div class="hero-content-left reveal visible">
+        <div class="hero-badge"><span class="pulse-dot"></span> Open to work</div>
+        <h1>Crafting Digital Experiences.</h1>
+        <p class="hero-desc">Frontend developer specializing in modern UI/UX, fluid animations, and interactive web applications.</p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">Explore Work</a>
+          <a href="#contact" class="btn btn-outline">Let's Talk</a>
+        </div>
+      </div>
+      <div class="hero-visual-right reveal visible">
+        <div class="glow-blob-container">
+          <div class="glow-blob shape-1"></div>
+          <div class="glow-blob shape-2"></div>
+          <div class="glow-blob shape-3"></div>
+          <div class="blob-glass"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -72,8 +82,8 @@
           <img src="ppgua.png" alt="Fadlan — Developer" id="profileImg">
         </div>
         <div class="about-text reveal">
-          <p>I'm a <strong style="color:var(--beige-light)">Fullstack Developer & AI Engineer</strong> based in Indonesia. I specialize in crafting modern web and mobile applications that are both beautiful and functional.</p>
-          <p>With a strong foundation in problem solving, API integration, and machine learning, I thrive on turning complex ideas into elegant digital solutions. I believe great software should feel intuitive, look stunning, and work flawlessly.</p>
+          <p>I'm a <strong style="color:var(--accent-primary)">Frontend Developer & UI/UX Enthusiast</strong> based in Indonesia. I specialize in crafting modern web and mobile applications that are beautiful, interactive, and highly functional.</p>
+          <p>With a strong eye for design and a passion for fluid animations, I thrive on turning complex ideas into elegant digital experiences. I believe great software should feel intuitive, look stunning, and perform flawlessly.</p>
           <div class="about-stats">
             <div class="stat-card">
               <div class="stat-number" data-count="3">0</div>
@@ -151,7 +161,7 @@
       <div class="projects-grid">
         <div class="project-card reveal" data-category="mobile api"
           data-title="APP-KRL"
-          data-desc="Real-time KRL Commuter app built with Flutter, integrating live transit APIs to reduce commute planning time for users."
+          data-desc="A real-time transit tracker built with Flutter. Consumes live transit APIs to deliver instant train schedules, significantly reducing commute planning time for users."
           data-tags="Flutter, Dart, API">
           <div class="project-thumb">
             <img src="appkrl.png" alt="APP-KRL" class="project-img">
@@ -159,7 +169,7 @@
           </div>
           <div class="project-info">
             <h3>APP-KRL</h3>
-            <p>A cross-platform mobile application engineered with Flutter that consumes live transit APIs to deliver real-time train schedules. Built to handle asynchronous data streams, ensuring commuters receive instant, accurate updates to optimize their travel.</p>
+            <p>A real-time transit tracker built with Flutter. Consumes live transit APIs to deliver instant train schedules, significantly reducing commute planning time for users.</p>
             <div class="project-tags">
               <span>Flutter</span><span>Dart</span><span>API</span>
             </div>
@@ -171,7 +181,7 @@
 
         <div class="project-card reveal" data-category="web"
           data-title="Aetheria2D Unity Game"
-          data-desc="A 2D narrative-driven game that combines interactive storytelling, tilemap-based environments, and player choices to create an engaging experience."
+          data-desc="A narrative-driven 2D platformer developed in Unity. Features custom C# state machines and dynamic tilemaps to deliver a high-performance, immersive gameplay experience."
           data-tags="Unity 2D, C#, Pixel Art">
           <div class="project-thumb">
             <img src="gameproject.png" alt="Aetheria2D" class="project-img">
@@ -179,7 +189,7 @@
           </div>
           <div class="project-info">
             <h3>Aetheria2D</h3>
-            <p>A narrative-driven 2D platformer developed in Unity. Engineered utilizing custom C# state machines, physics-based controllers, and dynamic tilemap generation to deliver a high-performance, immersive gameplay experience.</p>
+            <p>A narrative-driven 2D platformer developed in Unity. Features custom C# state machines and dynamic tilemaps to deliver a high-performance, immersive gameplay experience.</p>
             <div class="project-tags">
               <span>Unity 2D</span><span>C#</span><span>Pixel Art</span>
             </div>
@@ -197,6 +207,29 @@
   </section>
 
 
+
+  <!-- Certificate Section -->
+  <section id="certificates">
+    <div class="section">
+      <div class="reveal">
+        <span class="section-label"><span class="line"></span> Credentials</span>
+        <h2 class="section-title">Certifications</h2>
+        <p class="section-subtitle">Professional achievements and workshop credentials.</p>
+      </div>
+      <div class="cert-container reveal">
+        <div class="cert-card">
+          <div class="cert-image">
+            <img src="serti.png" alt="Workshop Meetup Certificate">
+          </div>
+          <div class="cert-info">
+            <h3>Workshop Meetup</h3>
+            <p>Issued for active participation and skill demonstration.</p>
+            <a href="serti.png" target="_blank" class="btn btn-outline">View Credential →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Journey / Timeline Section -->
   <section id="journey">

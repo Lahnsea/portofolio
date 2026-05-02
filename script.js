@@ -19,28 +19,61 @@ if (!isMobile) {
     mouseX = e.clientX;
     mouseY = e.clientY;
     if (cursor) {
-      cursor.style.left = mouseX - 4 + 'px';
-      cursor.style.top = mouseY - 4 + 'px';
+      cursor.style.left = mouseX - 3 + 'px';
+      cursor.style.top = mouseY - 3 + 'px';
     }
   });
 
+  let targetMagnetic = null;
+
   function animateFollower() {
-    followerX += (mouseX - followerX) * 0.12;
-    followerY += (mouseY - followerY) * 0.12;
-    if (follower) {
-      follower.style.left = followerX - 17.5 + 'px';
-      follower.style.top = followerY - 17.5 + 'px';
+    if (targetMagnetic) {
+      const rect = targetMagnetic.getBoundingClientRect();
+      const targetX = rect.left + rect.width / 2;
+      const targetY = rect.top + rect.height / 2;
+      
+      const magnetStrength = 0.4;
+      const magneticX = targetX + (mouseX - targetX) * magnetStrength;
+      const magneticY = targetY + (mouseY - targetY) * magnetStrength;
+
+      followerX += (magneticX - followerX) * 0.2;
+      followerY += (magneticY - followerY) * 0.2;
+      
+      if (follower) {
+        follower.style.left = followerX - 30 + 'px';
+        follower.style.top = followerY - 30 + 'px';
+      }
+    } else {
+      followerX += (mouseX - followerX) * 0.12;
+      followerY += (mouseY - followerY) * 0.12;
+      if (follower) {
+        follower.style.left = followerX - 20 + 'px';
+        follower.style.top = followerY - 20 + 'px';
+      }
     }
     requestAnimationFrame(animateFollower);
   }
   animateFollower();
-}
 
-// Hover effect on interactive elements
-document.querySelectorAll('a, button, .project-card, .skill-card, .contact-link, .filter-btn').forEach(el => {
-  el.addEventListener('mouseenter', () => follower && follower.classList.add('hover'));
-  el.addEventListener('mouseleave', () => follower && follower.classList.remove('hover'));
-});
+  // Hover effect on interactive elements
+  document.querySelectorAll('a, button, .project-card, .skill-card, .contact-link, .filter-btn').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      if (el.classList.contains('btn') || el.classList.contains('theme-btn')) {
+        targetMagnetic = el;
+        if (follower) follower.classList.add('magnetic');
+      } else {
+        if (follower) follower.classList.add('hover');
+      }
+    });
+    el.addEventListener('mouseleave', () => {
+      targetMagnetic = null;
+      if (follower) {
+        follower.classList.remove('magnetic');
+        follower.classList.remove('hover');
+      }
+    });
+  });
+}
 
 /* ========== PARTICLE BACKGROUND ========== */
 const canvas = document.getElementById('particles-canvas');
@@ -75,7 +108,7 @@ if (canvas && !isMobile) {
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${window.currentAccent || '212, 175, 55'}, ${this.opacity})`;
+      ctx.fillStyle = `rgba(${window.currentAccent || '139, 92, 246'}, ${this.opacity})`;
       ctx.fill();
     }
   }
@@ -92,7 +125,7 @@ if (canvas && !isMobile) {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(${window.currentAccent || '212, 175, 55'}, ${0.04 * (1 - dist / 150)})`;
+          ctx.strokeStyle = `rgba(${window.currentAccent || '139, 92, 246'}, ${0.04 * (1 - dist / 150)})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
@@ -285,12 +318,12 @@ function setTheme(isLight) {
     document.body.classList.add('light-mode');
     if (themeIcon) themeIcon.textContent = '🌙';
     localStorage.setItem('theme', 'light');
-    window.currentAccent = '184, 153, 71';
+    window.currentAccent = '109, 40, 217';
   } else {
     document.body.classList.remove('light-mode');
     if (themeIcon) themeIcon.textContent = '☀️';
     localStorage.setItem('theme', 'dark');
-    window.currentAccent = '212, 175, 55';
+    window.currentAccent = '139, 92, 246';
   }
 }
 
