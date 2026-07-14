@@ -9,7 +9,6 @@ const galleryImages = [
   { src: '/appkrl.png',      alt: 'APP-KRL project' },
   { src: '/gameproject.png', alt: 'Aetheria2D game' },
   { src: '/portoweb.png',    alt: 'Portfolio web' },
-  { src: '/ppgua.png',       alt: 'Profile photo' },
   { src: '/appkrl.png',      alt: 'APP-KRL project' },
   { src: '/gameproject.png', alt: 'Aetheria2D game' },
   { src: '/portoweb.png',    alt: 'Portfolio web' },
