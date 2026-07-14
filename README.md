@@ -1,118 +1,16 @@
-# 🌐 Personal Portfolio
+# React + Vite
 
-A personal portfolio website showcasing my projects, skills, and journey as a developer.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-## 👋 About Me
+Currently, two official plugins are available:
 
-Hi, I'm **Fadlan**.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-I'm a student and aspiring software developer who enjoys building applications, learning new technologies, and sharing my projects through GitHub.
+## React Compiler
 
-This portfolio serves as a central place to showcase my work, skills, and development experience.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
----
+## Expanding the Oxlint configuration
 
-## ✨ Features
-
-- Responsive Design
-- Project Showcase
-- Skills Section
-- About Me Section
-- Contact Information
-- Modern User Interface
-
----
-
-## 🛠️ Tech Stack
-
-- HTML
-- CSS
-- JavaScript
-- React (if used)
-- Tailwind CSS (if used)
-
----
-
-## 📂 Project Structure
-
-```text
-src/
-├── components/
-├── pages/
-├── assets/
-└── styles/
-```
-
----
-
-## 🚀 Getting Started
-
-### Clone Repository
-
-```bash
-git clone https://github.com/Lahnsea/portofolio.git
-```
-
-### Install Dependencies
-
-```bash
-npm install
-```
-
-### Run Development Server
-
-```bash
-npm run dev
-```
-
----
-
-## 📸 Screenshots
-
-### Home Page
-
-![Home](images/home.png)
-
-### Projects Section
-
-![Projects](images/projects.png)
-
-### About Section
-
-![About](images/about.png)
-
----
-
-## 🎯 Goals
-
-This portfolio was created to:
-
-- Showcase personal projects
-- Track learning progress
-- Build a professional online presence
-- Practice modern web development
-
----
-
-## 📈 Future Improvements
-
-- Dark Mode
-- Blog Section
-- Project Filtering
-- Multi-language Support
-- Better Animations
-
----
-
-## 👨‍💻 Author
-
-**Fadlan**
-
-GitHub:
-https://github.com/Lahnsea
-
----
-
-## 📄 License
-
-This project is available for educational and personal use.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
