@@ -36,13 +36,11 @@ export default function About() {
             <motion.div variants={fadeUp} className="relative order-2 lg:order-1">
               {/* Offset border frame (norevo style) */}
               <div className="absolute -bottom-4 -right-4 w-full h-full border border-border rounded-sm z-0" />
-              <div className="relative z-10 overflow-hidden rounded-sm bg-cream-3 aspect-[3/4] max-h-[600px]">
-                <img
-                  src="/ppgua.png"
-                  alt="Fadlan — Developer"
-                  className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
-                />
-                <div className="absolute inset-0 mix-blend-multiply bg-[#e8dfd3] opacity-20 pointer-events-none" />
+              <div className="relative z-10 overflow-hidden rounded-sm bg-[#EFE5D5] aspect-[3/4] max-h-[600px] flex flex-col items-center justify-center p-6 border border-dashed border-[#D0C7C3]">
+                <svg className="w-12 h-12 text-[#9f9896] mb-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span className="text-[9px] tracking-[3px] uppercase font-sans text-brown-3 text-center">Artwork Space</span>
               </div>
               {/* Floating caption */}
               <div className="absolute -bottom-6 -left-6 bg-cream border border-border px-5 py-4 rounded-sm shadow-[0_8px_32px_rgba(86,69,63,0.08)] z-20">
