@@ -19,11 +19,12 @@ export default function Footer() {
         <div className="flex flex-col gap-3">
           <p className="text-[9px] tracking-[3px] uppercase text-brown-3 mb-2">Navigation</p>
           {[
-            { label: 'About',    href: '#tentang' },
-            { label: 'Skills',   href: '#keahlian' },
-            { label: 'Projects', href: '#proyek' },
-            { label: 'Journey',  href: '#perjalanan' },
-            { label: 'Contact',  href: '#kontak' },
+            { label: 'About',        href: '#tentang' },
+            { label: 'Skills',       href: '#keahlian' },
+            { label: 'Projects',     href: '#proyek' },
+            { label: 'Certificates', href: '#sertifikat' },
+            { label: 'Journey',      href: '#perjalanan' },
+            { label: 'Contact',      href: '#kontak' },
           ].map((item) => (
             <a
               key={item.label}
