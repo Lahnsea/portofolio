@@ -16,6 +16,7 @@ const skills = [
   { name: 'UI/UX Design',   cat: 'Design' },
   { name: 'Figma',           cat: 'Design' },
   { name: 'Git & GitHub',    cat: 'Tools' },
+  { name: 'Postman',         cat: 'Tools' },
 ];
 
 const catColors = {

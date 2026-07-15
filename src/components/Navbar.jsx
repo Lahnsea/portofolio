@@ -28,7 +28,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${
         scrolled
           ? 'bg-cream/95 backdrop-blur-md border-b border-border shadow-[0_2px_20px_rgba(86,69,63,0.06)]'
-          : 'bg-cream/80 backdrop-blur-sm border-b border-[#D0C7C3]/60'
+          : 'bg-transparent border-b border-transparent'
       }`}
       style={{ top: 'var(--announcement-h, 36px)' }}
     >
