@@ -60,19 +60,19 @@ export default function Footer() {
       </div>
 
       {/* Massive Infinite Marquee Banner */}
-      <div className="w-full overflow-hidden select-none mt-8 border-t border-border/20 pt-8 relative z-0">
+      <div className="w-full overflow-hidden select-none pointer-events-none mt-8 border-t border-border/20 pt-8 relative z-0">
         <div className="flex whitespace-nowrap w-full">
           <div className="marquee-track flex gap-16 pr-16">
-            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.03] hover:opacity-10 hover:text-brown active:opacity-25 transition-all duration-300 font-bold tracking-tight cursor-default pointer-events-auto">FADLAN</span>
-            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.03] hover:opacity-10 hover:text-brown active:opacity-25 transition-all duration-300 font-bold tracking-tight cursor-default pointer-events-auto">FADLAN</span>
-            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.03] hover:opacity-10 hover:text-brown active:opacity-25 transition-all duration-300 font-bold tracking-tight cursor-default pointer-events-auto">FADLAN</span>
-            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.03] hover:opacity-10 hover:text-brown active:opacity-25 transition-all duration-300 font-bold tracking-tight cursor-default pointer-events-auto">FADLAN</span>
+            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.06] font-bold tracking-tight">FADLAN</span>
+            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.06] font-bold tracking-tight">FADLAN</span>
+            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.06] font-bold tracking-tight">FADLAN</span>
+            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.06] font-bold tracking-tight">FADLAN</span>
           </div>
           <div className="marquee-track flex gap-16 pr-16" aria-hidden="true">
-            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.03] hover:opacity-10 hover:text-brown active:opacity-25 transition-all duration-300 font-bold tracking-tight cursor-default pointer-events-auto">FADLAN</span>
-            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.03] hover:opacity-10 hover:text-brown active:opacity-25 transition-all duration-300 font-bold tracking-tight cursor-default pointer-events-auto">FADLAN</span>
-            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.03] hover:opacity-10 hover:text-brown active:opacity-25 transition-all duration-300 font-bold tracking-tight cursor-default pointer-events-auto">FADLAN</span>
-            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.03] hover:opacity-10 hover:text-brown active:opacity-25 transition-all duration-300 font-bold tracking-tight cursor-default pointer-events-auto">FADLAN</span>
+            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.06] font-bold tracking-tight">FADLAN</span>
+            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.06] font-bold tracking-tight">FADLAN</span>
+            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.06] font-bold tracking-tight">FADLAN</span>
+            <span className="font-serif text-[14vw] leading-none text-[#56453f] opacity-[0.06] font-bold tracking-tight">FADLAN</span>
           </div>
         </div>
       </div>
