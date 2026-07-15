@@ -4,6 +4,7 @@ import Cursor           from './components/Cursor';
 import Loader           from './components/Loader';
 import AnnouncementBar  from './components/AnnouncementBar';
 import Navbar           from './components/Navbar';
+import SideNavbar       from './components/SideNavbar';
 import Hero             from './components/Hero';
 import About            from './components/About';
 import Skills           from './components/Skills';
@@ -28,6 +29,7 @@ export default function App() {
         <>
           <AnnouncementBar />
           <Navbar />
+          <SideNavbar />
           <main>
             <Hero />
             <About />
