@@ -55,6 +55,13 @@ export default function SideNavbar() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
+  // Listen to close-sidenav event from chatbot
+  useEffect(() => {
+    const handleClose = () => setOpen(false);
+    window.addEventListener('close-sidenav', handleClose);
+    return () => window.removeEventListener('close-sidenav', handleClose);
+  }, []);
+
   // Lock body scroll when drawer is open
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -63,28 +70,27 @@ export default function SideNavbar() {
 
   const handleLinkClick = () => setOpen(false);
 
+  const handleOpen = () => {
+    setOpen(true);
+    // Automatically close the chatbot when menu is opened
+    window.dispatchEvent(new CustomEvent('close-chatbot'));
+  };
+
   return (
     <>
       {/* ── Trigger button — fixed on left edge ── */}
       <motion.button
         id="side-nav-trigger"
         aria-label="Open menu"
-        onClick={() => setOpen(true)}
+        onClick={handleOpen}
         initial={{ x: -60, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 2.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed left-0 top-1/2 -translate-y-1/2 z-[900] flex flex-col items-center justify-center gap-[5px] w-10 h-28 bg-cream border border-border border-l-0 rounded-r-sm shadow-[2px_0_16px_rgba(86,69,63,0.08)] hover:bg-cream-2 transition-colors duration-300"
+        className="fixed left-0 top-1/2 -translate-y-1/2 z-[900] flex flex-col items-center justify-center gap-[4px] w-10 h-14 bg-cream border border-border border-l-0 rounded-r-sm shadow-[2px_0_16px_rgba(86,69,63,0.08)] hover:bg-cream-2 transition-colors duration-300"
       >
         <span className="block w-5 h-px bg-brown" />
         <span className="block w-3 h-px bg-brown ml-[-8px]" />
         <span className="block w-5 h-px bg-brown" />
-        {/* Vertical label */}
-        <span
-          className="font-sans text-[9px] tracking-[3px] uppercase text-brown-3 mt-3"
-          style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
-        >
-          Menu
-        </span>
       </motion.button>
 
       {/* ── Backdrop ── */}

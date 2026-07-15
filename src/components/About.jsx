@@ -32,18 +32,45 @@ export default function About() {
             animate={inView ? 'show' : 'hidden'}
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
           >
-            {/* Left — Large portrait with floating frame */}
-            <motion.div variants={fadeUp} className="relative order-2 lg:order-1">
-              {/* Offset border frame (norevo style) */}
-              <div className="absolute -bottom-4 -right-4 w-full h-full border border-border rounded-sm z-0" />
-              <div className="relative z-10 overflow-hidden rounded-sm bg-[#EFE5D5] aspect-[3/4] max-h-[600px] flex flex-col items-center justify-center p-6 border border-dashed border-[#D0C7C3]">
-                <svg className="w-12 h-12 text-[#9f9896] mb-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span className="text-[9px] tracking-[3px] uppercase font-sans text-brown-3 text-center">Artwork Space</span>
+            {/* Left — Large portrait with museum exhibit frame */}
+            <motion.div variants={fadeUp} className="relative order-2 lg:order-1 p-1">
+              {/* Outer elegant stone frame */}
+              <div 
+                className="relative p-[5px] rounded-sm transition-all duration-500 shadow-md"
+                style={{
+                  background: 'linear-gradient(145deg, #E6E2DC, #D4CEC6, #DFD9D0)',
+                }}
+              >
+                {/* Inner inset border */}
+                <div 
+                  className="p-[4px] rounded-sm"
+                  style={{
+                    background: 'linear-gradient(145deg, #FAF9F6, #EDEAE5, #F5F3F0)',
+                  }}
+                >
+                  {/* Canvas area */}
+                  <div 
+                    className="relative z-10 overflow-hidden rounded-sm aspect-[3/4] max-h-[600px] flex flex-col items-center justify-center p-6"
+                    style={{
+                      background: 'radial-gradient(ellipse at 50% 20%, #FAF9F6 0%, #EDEAE5 100%)',
+                    }}
+                  >
+                    <svg className="w-12 h-12 text-brown-3 mb-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-[9px] tracking-[3px] uppercase font-sans text-brown-3 text-center">Portrait Exhibit</span>
+                  </div>
+                </div>
               </div>
-              {/* Floating caption */}
-              <div className="absolute -bottom-6 -left-6 bg-cream border border-border px-5 py-4 rounded-sm shadow-[0_8px_32px_rgba(86,69,63,0.08)] z-20">
+              
+              {/* Floating museum placard caption */}
+              <div 
+                className="absolute -bottom-6 -left-6 border px-5 py-4 rounded-sm shadow-lg z-20"
+                style={{
+                  background: '#FAF9F6',
+                  borderColor: '#D8D3CE',
+                }}
+              >
                 <div className="font-serif text-3xl font-light text-brown">3+</div>
                 <div className="text-[9px] tracking-[2px] uppercase text-brown-3 mt-1">Years of Learning</div>
               </div>

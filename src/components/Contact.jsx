@@ -87,92 +87,125 @@ export default function Contact() {
           </div>
 
           {/* Right — Form */}
-          <motion.div variants={fadeUp} className="lg:col-span-7 bg-[#FAF7F2] border border-[#D0C7C3] p-8 md:p-10 rounded-sm shadow-[0_4px_32px_rgba(86,69,63,0.03)]">
-            <h3 className="font-serif text-xl text-brown font-light mb-8 pb-3 border-b border-border/40">
-              Send a Message
-            </h3>
-            
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col gap-6"
+          <motion.div 
+            variants={fadeUp} 
+            className="lg:col-span-7 p-1"
+          >
+            {/* ── Outer elegant stone frame ── */}
+            <div
+              style={{
+                padding: '5px',
+                background: 'linear-gradient(145deg, #E6E2DC, #D4CEC6, #DFD9D0)',
+                boxShadow: '0 8px 30px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.6)',
+              }}
             >
-              <div className="flex flex-col gap-1.5">
-                <label className={`text-[9px] tracking-[3px] uppercase font-sans transition-colors duration-300 ${
-                  focusedField === 'name' ? 'text-[#56453f] font-semibold' : 'text-brown-3'
-                }`}>
-                  Name
-                </label>
-                <input 
-                  type="text" 
-                  name="name" 
-                  required 
-                  placeholder="Full name" 
-                  onFocus={() => setFocusedField('name')}
-                  onBlur={() => setFocusedField(null)}
-                  className={getInputClass('name')} 
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label className={`text-[9px] tracking-[3px] uppercase font-sans transition-colors duration-300 ${
-                  focusedField === 'email' ? 'text-[#56453f] font-semibold' : 'text-brown-3'
-                }`}>
-                  Email
-                </label>
-                <input 
-                  type="email" 
-                  name="email" 
-                  required 
-                  placeholder="email@example.com" 
-                  onFocus={() => setFocusedField('email')}
-                  onBlur={() => setFocusedField(null)}
-                  className={getInputClass('email')} 
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label className={`text-[9px] tracking-[3px] uppercase font-sans transition-colors duration-300 ${
-                  focusedField === 'message' ? 'text-[#56453f] font-semibold' : 'text-brown-3'
-                }`}>
-                  Message
-                </label>
-                <textarea 
-                  name="message" 
-                  required 
-                  rows={4} 
-                  placeholder="Tell me about your project or inquiry…" 
-                  onFocus={() => setFocusedField('message')}
-                  onBlur={() => setFocusedField(null)}
-                  className={`${getInputClass('message')} resize-none`} 
-                />
-              </div>
-
-              <button
-                type="submit"
-                data-cursor-hover
-                disabled={status === 'sent'}
-                className={`group self-start inline-flex items-center gap-2.5 px-8 py-3.5 rounded-sm text-xs font-sans font-medium tracking-wider uppercase transition-all duration-300 cursor-pointer ${
-                  status === 'sent' 
-                    ? 'bg-green-700 border-green-700 text-[#fbfbfb] shadow-sm' 
-                    : 'bg-[#56453f] text-[#fbfbfb] border-[#56453f] hover:bg-[#8B654E] hover:border-[#8B654E] shadow-sm hover:shadow-[0_4px_16px_rgba(86,69,63,0.15)]'
-                }`}
+              {/* ── Inner inset border ── */}
+              <div
+                style={{
+                  padding: '4px',
+                  background: 'linear-gradient(145deg, #FAF9F6, #EDEAE5, #F5F3F0)',
+                }}
               >
-                {status === 'sent' ? (
-                  <>
-                    <span>✓ Message Sent</span>
-                  </>
-                ) : (
-                  <>
-                    <span>Send Message</span>
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                  </>
-                )}
-              </button>
-            </form>
+                {/* ── Canvas area (Light Gallery Theme) ── */}
+                <div className="relative bg-cream p-8 md:p-10 overflow-hidden">
+                  <h3 className="font-serif text-xl text-brown font-light mb-8 pb-3 border-b border-border/40">
+                    Send a Message
+                  </h3>
+                  
+                  <form
+                    onSubmit={handleSubmit}
+                    className="flex flex-col gap-6"
+                  >
+                    <div className="flex flex-col gap-1.5">
+                      <label className={`text-[9px] tracking-[3px] uppercase font-sans transition-colors duration-300 ${
+                        focusedField === 'name' ? 'text-brown font-semibold' : 'text-brown-3'
+                      }`}>
+                        Name
+                      </label>
+                      <input 
+                        type="text" 
+                        name="name" 
+                        required 
+                        placeholder="Full name" 
+                        onFocus={() => setFocusedField('name')}
+                        onBlur={() => setFocusedField(null)}
+                        className={getInputClass('name')} 
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                      <label className={`text-[9px] tracking-[3px] uppercase font-sans transition-colors duration-300 ${
+                        focusedField === 'email' ? 'text-brown font-semibold' : 'text-brown-3'
+                      }`}>
+                        Email
+                      </label>
+                      <input 
+                        type="email" 
+                        name="email" 
+                        required 
+                        placeholder="email@example.com" 
+                        onFocus={() => setFocusedField('email')}
+                        onBlur={() => setFocusedField(null)}
+                        className={getInputClass('email')} 
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                      <label className={`text-[9px] tracking-[3px] uppercase font-sans transition-colors duration-300 ${
+                        focusedField === 'message' ? 'text-brown font-semibold' : 'text-brown-3'
+                      }`}>
+                        Message
+                      </label>
+                      <textarea 
+                        name="message" 
+                        required 
+                        rows={4} 
+                        placeholder="Tell me about your project or inquiry…" 
+                        onFocus={() => setFocusedField('message')}
+                        onBlur={() => setFocusedField(null)}
+                        className={`${getInputClass('message')} resize-none`} 
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      data-cursor-hover
+                      disabled={status === 'sent'}
+                      className={`group self-start inline-flex items-center gap-2.5 px-8 py-3.5 rounded-sm text-xs font-sans font-medium tracking-wider uppercase transition-all duration-300 cursor-pointer ${
+                        status === 'sent' 
+                          ? 'bg-green-700 border-green-700 text-cream shadow-sm' 
+                          : 'bg-brown text-cream border-brown hover:bg-brown-2 hover:border-brown-2 shadow-sm hover:shadow-[0_4px_16px_rgba(44,40,37,0.15)]'
+                      }`}
+                    >
+                      {status === 'sent' ? (
+                        <>
+                          <span>✓ Message Sent</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Send Message</span>
+                          <span className="group-hover:translate-x-1 transition-transform duration-300">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </span>
+                        </>
+                      )}
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            
+            {/* ── Museum placard below frame ── */}
+            <div className="mt-2.5 px-0.5 text-center opacity-60">
+              <p
+                className="font-sans leading-tight"
+                style={{ fontSize: '7px', letterSpacing: '1.5px', color: '#857872', textTransform: 'uppercase' }}
+              >
+                Correspondence · Desk 01
+              </p>
+            </div>
           </motion.div>
         </motion.div>
       </div>

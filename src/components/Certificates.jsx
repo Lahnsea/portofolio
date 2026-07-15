@@ -37,33 +37,47 @@ function CertModal({ cert, onClose }) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.94, y: 20 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="relative bg-cream rounded-sm overflow-hidden shadow-[0_32px_80px_rgba(86,69,63,0.25)] max-w-3xl w-full"
+          className="relative max-w-3xl w-full p-1.5"
+          style={{
+            background: 'linear-gradient(145deg, #E6E2DC, #D4CEC6, #DFD9D0)',
+            boxShadow: '0 30px 80px rgba(0,0,0,0.3)',
+          }}
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Image */}
-          <div className="w-full aspect-[4/3] bg-cream-3 overflow-hidden">
-            <img
-              src={cert.image}
-              alt={cert.title}
-              className="w-full h-full object-contain"
-            />
-          </div>
+          <div 
+            style={{
+              padding: '4px',
+              background: 'linear-gradient(145deg, #FAF9F6, #EDEAE5, #F5F3F0)',
+            }}
+          >
+            {/* Inner Content */}
+            <div className="bg-cream overflow-hidden">
+              {/* Image */}
+              <div className="w-full aspect-[4/3] bg-cream-3 overflow-hidden">
+                <img
+                  src={cert.image}
+                  alt={cert.title}
+                  className="w-full h-full object-contain"
+                />
+              </div>
 
-          {/* Info bar */}
-          <div className="px-6 py-5 border-t border-border flex items-start justify-between gap-4">
-            <div>
-              <h3 className="font-serif font-light text-lg text-brown leading-snug mb-1">{cert.title}</h3>
-              <p className="text-[10px] tracking-[2px] uppercase text-brown-3 font-sans">{cert.issuer} · {cert.date}</p>
+              {/* Info bar */}
+              <div className="px-6 py-5 border-t border-border flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="font-serif font-light text-lg text-brown leading-snug mb-1">{cert.title}</h3>
+                  <p className="text-[10px] tracking-[2px] uppercase text-brown-3 font-sans">{cert.issuer} · {cert.date}</p>
+                </div>
+                <button
+                  onClick={onClose}
+                  aria-label="Close"
+                  className="flex-shrink-0 w-9 h-9 rounded-full border border-border flex items-center justify-center text-brown-2 hover:bg-brown hover:text-cream hover:border-brown transition-all duration-300 cursor-pointer"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
             </div>
-            <button
-              onClick={onClose}
-              aria-label="Close"
-              className="flex-shrink-0 w-9 h-9 rounded-full border border-border flex items-center justify-center text-brown-2 hover:bg-brown hover:text-cream hover:border-brown transition-all duration-300"
-            >
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
           </div>
         </motion.div>
       </motion.div>
@@ -90,7 +104,7 @@ export default function Certificates() {
             <motion.div variants={fadeUp} className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
               <div>
                 <p className="text-[10px] tracking-[4px] uppercase font-sans text-brown-3 flex items-center gap-3 mb-5">
-                  <span className="inline-block w-8 h-px bg-[#9d8c84]" />
+                  <span className="inline-block w-8 h-px bg-border-2" />
                   Achievements
                 </p>
                 <h2
@@ -114,49 +128,84 @@ export default function Certificates() {
                 <motion.div
                   key={cert.id}
                   variants={fadeUp}
-                  whileHover={{ y: -4 }}
+                  whileHover={{ y: -5 }}
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   onClick={() => setSelected(cert)}
-                  className="group bg-cream-2 border border-border rounded-sm overflow-hidden cursor-pointer
-                             hover:border-[#9d8c84] hover:shadow-[0_16px_48px_rgba(86,69,63,0.10)]
-                             transition-all duration-500"
+                  className="group cursor-pointer select-none"
                   data-cursor-hover
                 >
-                  {/* Certificate thumbnail */}
-                  <div className="relative overflow-hidden aspect-[4/3] bg-cream-3">
-                    <img
-                      src={cert.image}
-                      alt={cert.title}
-                      className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-700"
-                    />
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#56453f]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
-                      <span className="text-[9px] tracking-[2px] uppercase font-sans text-white/90 flex items-center gap-1.5">
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                        </svg>
-                        View Certificate
-                      </span>
-                    </div>
-                    {/* Category badge */}
-                    <div className="absolute top-3 right-3 bg-[#E4C7B8]/90 backdrop-blur-sm border border-[#D0C7C3] text-[9px] tracking-[1.5px] uppercase text-[#56453f] px-2.5 py-1 rounded-sm">
-                      {cert.category}
+                  {/* ── Outer elegant stone frame ── */}
+                  <div
+                    className="relative transition-all duration-500"
+                    style={{
+                      padding: '4px',
+                      background: 'linear-gradient(145deg, #E6E2DC, #D4CEC6, #DFD9D0)',
+                      boxShadow: '0 4px 16px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.6)',
+                    }}
+                  >
+                    {/* ── Inner inset border ── */}
+                    <div
+                      style={{
+                        padding: '3px',
+                        background: 'linear-gradient(145deg, #FAF9F6, #EDEAE5, #F5F3F0)',
+                      }}
+                    >
+                      {/* ── Canvas area (Light Gallery Theme) ── */}
+                      <div className="relative overflow-hidden bg-cream">
+                        {/* Certificate thumbnail */}
+                        <div className="relative overflow-hidden aspect-[4/3] bg-cream-3">
+                          <img
+                            src={cert.image}
+                            alt={cert.title}
+                            className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-700"
+                          />
+                          {/* Spotlight glow */}
+                          <div
+                            className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                            style={{
+                              background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 169, 110, 0.15) 0%, transparent 70%)',
+                            }}
+                          />
+                          {/* Category badge */}
+                          <div 
+                            className="absolute top-3 right-3 border text-[9px] tracking-[1.5px] uppercase px-2.5 py-1 rounded-sm shadow-sm font-sans font-medium"
+                            style={{
+                              background: 'rgba(201, 169, 110, 0.12)',
+                              borderColor: 'rgba(201, 169, 110, 0.3)',
+                              color: '#C9A96E',
+                            }}
+                          >
+                            {cert.category}
+                          </div>
+                        </div>
+
+                        {/* Info */}
+                        <div className="p-5">
+                          <h3 className="font-serif font-light text-lg text-brown leading-snug mb-1.5 line-clamp-2">
+                            {cert.title}
+                          </h3>
+                          <p className="text-xs font-sans text-brown-2 leading-relaxed mb-3 line-clamp-2 font-light">
+                            {cert.subtitle}
+                          </p>
+                          <div className="flex items-center justify-between">
+                            <span className="text-[9px] tracking-[2px] uppercase text-brown-3 font-sans">{cert.date}</span>
+                            <span className="text-[9px] tracking-[1.5px] uppercase text-brown-3 font-sans truncate max-w-[140px] text-right">{cert.issuer}</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Info */}
-                  <div className="p-5">
-                    <h3 className="font-serif font-light text-lg text-brown leading-snug mb-1.5 line-clamp-2">
-                      {cert.title}
-                    </h3>
-                    <p className="text-xs font-sans text-brown-2 leading-relaxed mb-3 line-clamp-2 font-light">
-                      {cert.subtitle}
+                  {/* ── Museum placard below frame ── */}
+                  <div
+                    className="mt-2.5 px-0.5 transition-all duration-300 text-center opacity-60 group-hover:opacity-100"
+                  >
+                    <p
+                      className="font-sans leading-tight"
+                      style={{ fontSize: '7px', letterSpacing: '1.5px', color: '#857872', textTransform: 'uppercase' }}
+                    >
+                      {cert.category} · Exhibit {cert.id}
                     </p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[9px] tracking-[2px] uppercase text-brown-3 font-sans">{cert.date}</span>
-                      <span className="text-[9px] tracking-[1.5px] uppercase text-brown-3 font-sans truncate max-w-[140px] text-right">{cert.issuer}</span>
-                    </div>
                   </div>
                 </motion.div>
               ))}

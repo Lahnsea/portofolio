@@ -5,6 +5,15 @@ const ANNOUNCEMENT_H = 36;
 const NAV_H          = 72;
 const OFFSET         = ANNOUNCEMENT_H + NAV_H; // ~108px
 
+const projects = [
+  { src: '/appkrl.png',      title: 'APP-KRL',    subtitle: 'Mobile & API',       tags: ['Flutter', 'Dart'] },
+  { src: '/gameproject.png', title: 'Aetheria2D', subtitle: 'Game Development',   tags: ['Unity 2D', 'C#'] },
+  { src: '/portoweb.png',    title: 'Portfolio',  subtitle: 'Web Development',     tags: ['React', 'Tailwind'] },
+  { src: '/appkrl.png',      title: 'APP-KRL',    subtitle: 'Mobile & API',       tags: ['Flutter', 'Dart'] },
+  { src: '/gameproject.png', title: 'Aetheria2D', subtitle: 'Game Development',   tags: ['Unity 2D', 'C#'] },
+  { src: '/portoweb.png',    title: 'Portfolio',  subtitle: 'Web Development',     tags: ['React', 'Tailwind'] },
+];
+
 const galleryImages = [
   { src: '/appkrl.png',      alt: 'APP-KRL project' },
   { src: '/gameproject.png', alt: 'Aetheria2D game' },
@@ -101,38 +110,105 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* ── Horizontal scrolling gallery strip (norevo's image row) ── */}
-      <div className="bg-cream border-t border-border overflow-hidden">
-        {/* Marquee row */}
-        <div className="py-1 overflow-hidden">
-          <div className="flex gap-2 gallery-marquee" style={{ width: 'max-content' }}>
-            {[...galleryImages, ...galleryImages].map((img, i) => (
-              <div
-                key={i}
-                className="flex-shrink-0 w-[260px] md:w-[320px] h-[200px] md:h-[240px] overflow-hidden bg-cream-3"
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
-                  draggable="false"
-                />
-              </div>
-            ))}
-          </div>
+      {/* ── Text Marquee Bar (skills/disciplines) ── */}
+      <div className="border-t border-border bg-[#EFE5D5] overflow-hidden py-3">
+        <div className="whitespace-nowrap inline-block marquee-track">
+          {[...Array(2)].map((_, i) => (
+            <span key={i} className="inline-block">
+              {['FRONTEND DEVELOPMENT', 'MOBILE DEVELOPMENT', 'UI/UX DESIGN', 'AI ENGINEERING', 'FULLSTACK ARCHITECTURE', 'GAME DEVELOPMENT'].map((item) => (
+                <span key={item} className="inline-block mx-8 text-[10px] tracking-[4px] uppercase text-brown-3 font-sans">
+                  {item} <span className="mx-4 text-[#D0C7C3]">•</span>
+                </span>
+              ))}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Featured Projects Marquee Strip ── */}
+      <div className="bg-cream border-t border-border overflow-hidden relative">
+        {/* Section label */}
+        <div className="absolute top-0 left-0 z-10 px-6 md:px-10 py-3 flex items-center gap-3 pointer-events-none">
+          <span className="inline-block w-5 h-px bg-brown-3/50" />
+          <span className="text-[8px] tracking-[3px] uppercase font-sans text-brown-3/70">Featured Work</span>
         </div>
 
-        {/* Marquee text bar */}
-        <div className="border-t border-border bg-[#EFE5D5] overflow-hidden py-3">
-          <div className="whitespace-nowrap inline-block marquee-track">
-            {[...Array(2)].map((_, i) => (
-              <span key={i} className="inline-block">
-                {['FRONTEND DEVELOPMENT', 'MOBILE DEVELOPMENT', 'UI/UX DESIGN', 'AI ENGINEERING', 'FULLSTACK ARCHITECTURE', 'GAME DEVELOPMENT'].map((item) => (
-                  <span key={item} className="inline-block mx-8 text-[10px] tracking-[4px] uppercase text-brown-3 font-sans">
-                    {item} <span className="mx-4 text-[#D0C7C3]">•</span>
-                  </span>
-                ))}
-              </span>
+        {/* Project card marquee */}
+        <div className="py-5 pt-8 overflow-hidden">
+          <div className="flex gap-4 project-marquee" style={{ width: 'max-content' }}>
+            {[...projects, ...projects].map((proj, i) => (
+              <a
+                key={i}
+                href="#proyek"
+                className="group flex-shrink-0 w-[240px] md:w-[280px] select-none"
+                draggable="false"
+              >
+                {/* Outer stone frame */}
+                <div
+                  className="relative transition-all duration-500"
+                  style={{
+                    padding: '4px',
+                    background: 'linear-gradient(145deg, #E6E2DC, #D4CEC6, #DFD9D0)',
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.6)',
+                  }}
+                >
+                  {/* Inner inset border */}
+                  <div style={{ padding: '3px', background: 'linear-gradient(145deg, #FAF9F6, #EDEAE5, #F5F3F0)' }}>
+                    {/* Canvas area */}
+                    <div className="relative bg-cream overflow-hidden">
+                      {/* Image */}
+                      <div className="relative overflow-hidden h-[140px] md:h-[160px] bg-cream-3">
+                        <img
+                          src={proj.src}
+                          alt={proj.title}
+                          className="w-full h-full object-cover object-top transition-transform duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
+                          draggable="false"
+                        />
+                        {/* Spotlight hover */}
+                        <div
+                          className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                          style={{
+                            background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 169, 110, 0.18) 0%, transparent 70%)',
+                          }}
+                        />
+                        {/* Category badge */}
+                        <div
+                          className="absolute top-2.5 right-2.5 text-[8px] tracking-[1.5px] uppercase px-2 py-0.5 font-sans border"
+                          style={{
+                            background: 'rgba(201, 169, 110, 0.12)',
+                            borderColor: 'rgba(201, 169, 110, 0.3)',
+                            color: '#C9A96E',
+                          }}
+                        >
+                          {proj.subtitle}
+                        </div>
+                      </div>
+
+                      {/* Info placard */}
+                      <div className="px-3.5 py-3">
+                        <p className="font-serif font-light text-brown text-base leading-tight mb-1.5">{proj.title}</p>
+                        <div className="flex flex-wrap gap-1">
+                          {proj.tags.map((t) => (
+                            <span
+                              key={t}
+                              className="text-[8px] px-1.5 py-0.5 border border-border text-brown-3 bg-cream-3 font-sans tracking-wide"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Museum placard */}
+                <div className="mt-1.5 text-center">
+                  <p className="font-sans" style={{ fontSize: '7px', letterSpacing: '1.5px', color: '#857872', textTransform: 'uppercase' }}>
+                    {proj.subtitle} · Exhibit
+                  </p>
+                </div>
+              </a>
             ))}
           </div>
         </div>

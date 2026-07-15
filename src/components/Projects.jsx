@@ -63,42 +63,99 @@ function ProjectCard({ project, isDragging }) {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative flex-shrink-0 w-[85vw] sm:w-[50vw] md:w-[38vw] lg:w-[30vw] bg-cream border border-border rounded-sm overflow-hidden hover:border-[#9d8c84] hover:shadow-[0_20px_60px_rgba(86,69,63,0.10)] transition-all duration-500 select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+      className={`group relative flex-shrink-0 w-[85vw] sm:w-[50vw] md:w-[38vw] lg:w-[30vw] select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Image */}
-      <div className="relative overflow-hidden aspect-[4/3] bg-cream-3 pointer-events-none">
-        <img
-          src={project.image}
-          alt={project.title}
-          className={`w-full h-full object-cover object-top transition-all duration-700 ${hovered ? 'scale-105 grayscale-0' : 'scale-100 grayscale'}`}
-        />
-        {/* Gradient overlay on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#56453f]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
-          <span className="text-xs tracking-[2px] uppercase font-sans text-white/90">View Project →</span>
-        </div>
-        {/* Year badge */}
-        <div className="absolute top-4 left-4 bg-cream/90 backdrop-blur-sm border border-border text-[9px] tracking-[2px] uppercase text-brown-2 px-2.5 py-1 rounded-sm">
-          {project.year}
-        </div>
-        {/* Category badge */}
-        <div className="absolute top-4 right-4 bg-[#E4C7B8]/90 backdrop-blur-sm border border-[#D0C7C3] text-[9px] tracking-[1.5px] uppercase text-[#56453f] px-2.5 py-1 rounded-sm">
-          {project.subtitle}
+      {/* ── Outer elegant stone frame ── */}
+      <div
+        className="relative transition-all duration-500"
+        style={{
+          padding: '5px',
+          background: hovered
+            ? 'linear-gradient(135deg, #C9A96E, #EDEAE5, #C9A96E)'
+            : 'linear-gradient(145deg, #E6E2DC, #D4CEC6, #DFD9D0)',
+          boxShadow: hovered
+            ? '0 12px 30px rgba(201, 169, 110, 0.15), 0 4px 16px rgba(0,0,0,0.04)'
+            : '0 4px 16px rgba(0,0,0,0.04), inset 0 1px 0 rgba(255,255,255,0.6)',
+        }}
+      >
+        {/* ── Inner inset border ── */}
+        <div
+          style={{
+            padding: '4px',
+            background: 'linear-gradient(145deg, #FAF9F6, #EDEAE5, #F5F3F0)',
+          }}
+        >
+          {/* ── Canvas area (Light Gallery Theme) ── */}
+          <div
+            className="relative overflow-hidden transition-all duration-500 bg-cream"
+          >
+            {/* Image */}
+            <div className="relative overflow-hidden aspect-[4/3] bg-cream-3 pointer-events-none">
+              <img
+                src={project.image}
+                alt={project.title}
+                className={`w-full h-full object-cover object-top transition-all duration-700 ${hovered ? 'scale-105 grayscale-0' : 'scale-100 grayscale'}`}
+              />
+              {/* Spotlight cone from top */}
+              <div
+                className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 169, 110, 0.15) 0%, transparent 70%)',
+                }}
+              />
+              {/* Year badge */}
+              <div 
+                className="absolute top-4 left-4 border text-[9px] tracking-[2px] uppercase px-2.5 py-1 rounded-sm shadow-sm font-sans font-medium"
+                style={{
+                  background: '#FAF9F6',
+                  borderColor: '#D8D3CE',
+                  color: '#6B6460',
+                }}
+              >
+                {project.year}
+              </div>
+              {/* Category badge */}
+              <div 
+                className="absolute top-4 right-4 border text-[9px] tracking-[1.5px] uppercase px-2.5 py-1 rounded-sm shadow-sm font-sans font-medium"
+                style={{
+                  background: 'rgba(201, 169, 110, 0.12)',
+                  borderColor: 'rgba(201, 169, 110, 0.3)',
+                  color: '#C9A96E',
+                }}
+              >
+                {project.subtitle}
+              </div>
+            </div>
+
+            {/* Info */}
+            <div className="p-5 pb-6">
+              <h3 className="font-serif font-light text-2xl text-brown leading-tight mb-2">{project.title}</h3>
+              <p className="text-sm font-sans text-brown-2 leading-relaxed mb-5 font-light line-clamp-2">{project.desc}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {project.tags.map((tag) => (
+                  <span key={tag} className="text-[10px] px-2.5 py-1 rounded-sm border border-border text-brown-3 bg-cream-3 font-sans tracking-wide">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Info */}
-      <div className="p-5 pb-6">
-        <h3 className="font-serif font-light text-2xl text-brown leading-tight mb-1">{project.title}</h3>
-        <p className="text-sm font-sans text-brown-2 leading-relaxed mb-4 font-light line-clamp-2">{project.desc}</p>
-        <div className="flex flex-wrap gap-1.5">
-          {project.tags.map((tag) => (
-            <span key={tag} className="text-[10px] px-2.5 py-1 rounded-sm border border-border text-brown-3 bg-cream-3 font-sans tracking-wide">
-              {tag}
-            </span>
-          ))}
-        </div>
+      {/* ── Museum placard below frame ── */}
+      <div
+        className="mt-2.5 px-0.5 transition-all duration-300 text-center"
+        style={{ opacity: hovered ? 1 : 0.6 }}
+      >
+        <p
+          className="font-sans leading-tight"
+          style={{ fontSize: '7px', letterSpacing: '1.5px', color: '#857872', textTransform: 'uppercase' }}
+        >
+          {project.subtitle} · Exhibit {project.id}
+        </p>
       </div>
 
       {/* Full clickable overlay */}

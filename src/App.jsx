@@ -5,6 +5,7 @@ import Loader           from './components/Loader';
 import AnnouncementBar  from './components/AnnouncementBar';
 import Navbar           from './components/Navbar';
 import SideNavbar       from './components/SideNavbar';
+import ChatbotNav       from './components/ChatbotNav';
 import Hero             from './components/Hero';
 import About            from './components/About';
 import Skills           from './components/Skills';
@@ -30,6 +31,7 @@ export default function App() {
           <AnnouncementBar />
           <Navbar />
           <SideNavbar />
+          <ChatbotNav />
           <main>
             <Hero />
             <About />

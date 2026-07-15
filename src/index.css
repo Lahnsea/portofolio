@@ -23,8 +23,8 @@
   }
 
   ::selection {
-    background: #FFD875;
-    color: #56453f;
+    background: #C9A96E;
+    color: #F5F3F0;
   }
 
   ::-webkit-scrollbar {
@@ -34,11 +34,11 @@
     @apply bg-cream-2;
   }
   ::-webkit-scrollbar-thumb {
-    background: #d0c7c3;
+    background: #C8C2BC;
     border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #9d8c84;
+    background: #9A9390;
   }
 }
 
@@ -52,7 +52,7 @@
   }
   .cursor-dot.hover {
     @apply w-10 h-10;
-    background: rgba(86,69,63,0.08);
+    background: rgba(44,40,37,0.07);
   }
 
   /* Section wrapper */
@@ -79,7 +79,7 @@
   .btn-primary {
     @apply inline-flex items-center gap-2 px-7 py-3 rounded-sm text-sm font-sans font-medium
            bg-btn-bg text-brown border border-btn-bg
-           hover:bg-[#f0dcd2] hover:border-[#f0dcd2]
+           hover:bg-[#CFC8BF] hover:border-[#CFC8BF]
            transition-all duration-300 tracking-wide;
   }
 
@@ -94,7 +94,7 @@
   /* Card */
   .warm-card {
     @apply bg-cream-2 border border-border rounded-sm p-6
-           hover:border-border-2 hover:shadow-[0_8px_32px_rgba(86,69,63,0.07)]
+           hover:border-border-2 hover:shadow-[0_8px_32px_rgba(44,40,37,0.07)]
            transition-all duration-500;
   }
 }
@@ -125,6 +125,18 @@
   animation-play-state: paused;
 }
 @keyframes galleryMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Project card strip marquee */
+.project-marquee {
+  animation: projectMarquee 50s linear infinite;
+}
+.project-marquee:hover {
+  animation-play-state: paused;
+}
+@keyframes projectMarquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }

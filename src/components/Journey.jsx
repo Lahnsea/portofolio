@@ -54,7 +54,7 @@ export default function Journey() {
   const [activeTab, setActiveTab] = useState(timeline[0]);
 
   return (
-    <section id="perjalanan" className="bg-[#EFE5D5] border-t border-border">
+    <section id="perjalanan" className="bg-cream-2 border-t border-border">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 py-20 md:py-28">
         <motion.div
           ref={ref}
@@ -64,7 +64,7 @@ export default function Journey() {
         >
           {/* Section Header */}
           <motion.p variants={fadeUp} className="text-[10px] tracking-[4px] uppercase font-sans text-brown-3 flex items-center gap-3 mb-5">
-            <span className="inline-block w-8 h-px bg-[#9d8c84]" />
+            <span className="inline-block w-8 h-px bg-border-2" />
             Journey
           </motion.p>
           <motion.h2
@@ -92,7 +92,7 @@ export default function Journey() {
                     {isActive && (
                       <motion.div
                         layoutId="activeTimelineLine"
-                        className="absolute left-0 bottom-0 lg:bottom-auto lg:top-0 h-0.5 lg:h-full w-full lg:w-0.5 bg-[#857872]"
+                        className="absolute left-0 bottom-0 lg:bottom-auto lg:top-0 h-0.5 lg:h-full w-full lg:w-0.5 bg-accent"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -114,7 +114,7 @@ export default function Journey() {
 
             {/* Right Column: Display Card with drag/swipe support */}
             <div className="lg:col-span-8 min-h-[380px]">
-              <div className="text-right text-[10px] text-brown-3 font-sans tracking-widest uppercase mb-2 select-none">
+              <div className="text-right text-[10px] text-brown-3 font-sans tracking-widest uppercase mb-3 select-none">
                 ← Swipe card or click years to navigate →
               </div>
               <AnimatePresence mode="wait">
@@ -142,50 +142,90 @@ export default function Journey() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                  className="bg-cream border border-border p-8 md:p-10 rounded-sm shadow-[0_8px_32px_rgba(86,69,63,0.04)] cursor-grab active:cursor-grabbing select-none touch-pan-y"
+                  className="relative cursor-grab active:cursor-grabbing select-none touch-pan-y"
                 >
-                  <div className="border-b border-border/60 pb-5 mb-6 pointer-events-none">
-                    <p className="text-[10px] tracking-[3px] uppercase font-sans text-brown-3 mb-2">{activeTab.year} Milestone</p>
-                    <h3 className="font-serif text-2xl md:text-3xl text-brown font-light mb-1">{activeTab.title}</h3>
-                    <p className="text-xs font-sans tracking-[2px] uppercase text-brown-3">{activeTab.sub}</p>
-                  </div>
+                  {/* ── Outer elegant stone frame ── */}
+                  <div
+                    style={{
+                      padding: '5px',
+                      background: 'linear-gradient(145deg, #E6E2DC, #D4CEC6, #DFD9D0)',
+                      boxShadow: '0 8px 30px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.6)',
+                    }}
+                  >
+                    {/* ── Inner inset border ── */}
+                    <div
+                      style={{
+                        padding: '4px',
+                        background: 'linear-gradient(145deg, #FAF9F6, #EDEAE5, #F5F3F0)',
+                      }}
+                    >
+                      {/* ── Canvas area (Light Gallery Theme) ── */}
+                      <div className="relative bg-cream p-8 md:p-10 overflow-hidden">
+                        {/* Spotlight glow */}
+                        <div
+                          className="absolute inset-0 pointer-events-none"
+                          style={{
+                            background: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(201, 169, 110, 0.05) 0%, transparent 70%)',
+                          }}
+                        />
 
-                  <p className="text-sm font-sans text-brown-2 leading-relaxed font-light mb-8 pointer-events-none">
-                    {activeTab.desc}
-                  </p>
+                        <div className="relative z-10">
+                          <div className="border-b border-border/60 pb-5 mb-6 pointer-events-none">
+                            <p className="text-[10px] tracking-[3px] uppercase font-sans text-brown-3 mb-2">{activeTab.year} Milestone</p>
+                            <h3 className="font-serif text-2xl md:text-3xl text-brown font-light mb-1">{activeTab.title}</h3>
+                            <p className="text-xs font-sans tracking-[2px] uppercase text-brown-3">{activeTab.sub}</p>
+                          </div>
 
-                  {/* Achievements section */}
-                  <div className="mb-8 pointer-events-none">
-                    <span className="text-[9px] tracking-[2px] uppercase font-sans text-brown-3 block mb-4 font-semibold">
-                      Key Highlights & Learnings
-                    </span>
-                    <ul className="space-y-3.5">
-                      {activeTab.achievements.map((achievement, idx) => (
-                        <li key={idx} className="flex items-start gap-3.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#857872] mt-2 flex-shrink-0" />
-                          <span className="text-sm font-sans text-brown-2 font-light leading-snug">
-                            {achievement}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                          <p className="text-sm font-sans text-brown-2 leading-relaxed font-light mb-8 pointer-events-none">
+                            {activeTab.desc}
+                          </p>
 
-                  {/* Tech stack items acquired */}
-                  <div className="border-t border-border/60 pt-6 pointer-events-none">
-                    <span className="text-[9px] tracking-[2px] uppercase font-sans text-brown-3 block mb-3 font-semibold">
-                      Focus Stack
-                    </span>
-                    <div className="flex flex-wrap gap-2">
-                      {activeTab.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="text-[10px] font-sans px-3 py-1 bg-cream-2 border border-border text-brown-2 rounded-sm tracking-wide"
-                        >
-                          {skill}
-                        </span>
-                      ))}
+                          {/* Achievements section */}
+                          <div className="mb-8 pointer-events-none">
+                            <span className="text-[9px] tracking-[2px] uppercase font-sans text-brown-3 block mb-4 font-semibold">
+                              Key Highlights & Learnings
+                            </span>
+                            <ul className="space-y-3.5">
+                              {activeTab.achievements.map((achievement, idx) => (
+                                <li key={idx} className="flex items-start gap-3.5">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+                                  <span className="text-sm font-sans text-brown-2 font-light leading-snug">
+                                    {achievement}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          {/* Tech stack items acquired */}
+                          <div className="border-t border-border/60 pt-6 pointer-events-none">
+                            <span className="text-[9px] tracking-[2px] uppercase font-sans text-brown-3 block mb-3 font-semibold">
+                              Focus Stack
+                            </span>
+                            <div className="flex flex-wrap gap-2">
+                              {activeTab.skills.map((skill) => (
+                                <span
+                                  key={skill}
+                                  className="text-[10px] font-sans px-3 py-1 bg-cream-2 border border-border text-brown-2 rounded-sm tracking-wide"
+                                >
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+
+                  {/* ── Museum placard below frame ── */}
+                  <div className="mt-2.5 px-0.5 text-center opacity-60">
+                    <p
+                      className="font-sans leading-tight"
+                      style={{ fontSize: '7px', letterSpacing: '1.5px', color: '#857872', textTransform: 'uppercase' }}
+                    >
+                      Chronology · Chapter {activeTab.id}
+                    </p>
                   </div>
 
                 </motion.div>

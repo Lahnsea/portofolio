@@ -4,16 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream:   '#f4f0ea',
-        'cream-2': '#efe5d5',
-        'cream-3': '#e8dfd3',
-        brown:   '#56453f',
-        'brown-2': '#857872',
-        'brown-3': '#9f9896',
-        border:  '#d0c7c3',
-        'border-2': '#9d8c84',
-        accent:  '#FFD875',
-        'btn-bg': '#E4C7B8',
+        // Elegant stone palette — cool-warm balance
+        cream:     '#F5F3F0',   // cooler, cleaner ivory
+        'cream-2': '#EDEAE5',   // refined stone
+        'cream-3': '#E4E0DA',   // subtle warm-grey
+        brown:     '#2C2825',   // near-charcoal, very elegant
+        'brown-2': '#6B6460',   // medium stone
+        'brown-3': '#9A9390',   // muted stone
+        border:    '#D8D3CE',   // cool-grey border
+        'border-2': '#A8A09C',  // medium border
+        accent:    '#C9A96E',   // refined gold (not yellow)
+        'btn-bg':  '#DDD5CC',   // elegant stone button
       },
       fontFamily: {
         serif: ['Fraunces', 'Georgia', 'serif'],
