@@ -4,90 +4,124 @@ import { motion, AnimatePresence } from 'framer-motion';
 // ── Knowledge Base ─────────────────────────────────────────────────────────
 const KB = [
   {
-    keys: ['siapa', 'who', 'kamu', 'fadlan', 'nama', 'name', 'perkenalan', 'diri'],
+    keys: ['halo', 'hai', 'hello', 'hi', 'hey', 'selamat', 'salam', 'p', 'hei'],
     answer:
-      'Halo! Saya **Fadlansyahrulloh Ajib** 👋 — seorang developer dari Indonesia yang berfokus pada pengembangan digital yang elegan dan berperforma tinggi. Saya passionate di bidang Frontend, Mobile, Game Dev, dan UI/UX.',
+      'Halo! 👋 Selamat datang di portofolio Fadlan.\nSaya siap menjawab pertanyaan seputar Fadlan, keahlian, proyek, atau cara menghubungi. Silakan tanya apa saja!',
   },
   {
-    keys: ['kerja', 'bidang', 'spesialisasi', 'skill', 'keahlian', 'bisa', 'work', 'expertise', 'do', 'apa yang'],
+    keys: ['siapa', 'who', 'kamu', 'fadlan', 'nama', 'name', 'perkenalan', 'diri', 'tentang', 'about'],
     answer:
-      'Saya bekerja di beberapa bidang:\n\n• **Frontend Development** — React, HTML, CSS, JavaScript, Tailwind\n• **Mobile Development** — Flutter & Dart\n• **Game Development** — Unity 2D & C#\n• **UI/UX Design** — desain antarmuka yang premium\n• **Fullstack & AI Engineering** — eksplorasi backend dan AI',
+      'Saya **Fadlansyahrulloh Ajib** 👋\n\nSeorang developer muda dari Indonesia yang berfokus pada pengembangan digital yang elegan dan berperforma tinggi. Saya passionate di bidang:\n\n⚛️ Frontend Development\n📱 Mobile Development\n🕹️ Game Development\n🎨 UI/UX Design',
   },
   {
-    keys: ['project', 'proyek', 'portofolio', 'karya', 'work', 'dibuat', 'projects'],
+    keys: ['kerja', 'bidang', 'spesialisasi', 'skill', 'keahlian', 'bisa', 'work', 'expertise', 'apa yang', 'kemampuan'],
     answer:
-      'Saya memiliki beberapa proyek unggulan:\n\n🚉 **APP-KRL** — Aplikasi pelacak kereta real-time dengan Flutter & API Transit.\n\n⚔️ **Aetheria2D** — Game platformer 2D narrative-driven di Unity dengan C#.\n\n🌐 **Portfolio Website** — Website portofolio ini sendiri, dibangun dengan React + Tailwind CSS.',
+      'Saya bekerja di beberapa bidang:\n\n• **Frontend** — React, HTML, CSS, JavaScript, Tailwind\n• **Mobile** — Flutter & Dart\n• **Game Dev** — Unity 2D & C#\n• **UI/UX Design** — antarmuka premium & intuitif\n• **Fullstack & AI** — eksplorasi backend dan AI',
   },
   {
-    keys: ['sertifikat', 'certificate', 'sertifikasi', 'award', 'penghargaan'],
+    keys: ['project', 'proyek', 'portofolio', 'karya', 'dibuat', 'projects', 'hasil', 'buatan'],
     answer:
-      'Saya memiliki berbagai sertifikat di bidang pemrograman dan desain. Anda bisa melihat selengkapnya di bagian **Certificates & Awards** di halaman ini 🏅.',
+      'Proyek unggulan saya:\n\n🚉 **APP-KRL** — Pelacak kereta real-time dengan Flutter & API Transit.\n\n⚔️ **Aetheria2D** — Game platformer 2D narrative-driven di Unity & C#.\n\n🌐 **Portfolio Website** — Website ini sendiri, dibangun dengan React + Tailwind CSS.',
   },
   {
-    keys: ['perjalanan', 'journey', 'karir', 'pendidikan', 'latar', 'background', 'career', 'path', 'milestone'],
+    keys: ['sertifikat', 'certificate', 'sertifikasi', 'award', 'penghargaan', 'achievements'],
     answer:
-      'Perjalanan saya dimulai dari ketertarikan terhadap teknologi dan desain. Saya terus berkembang melalui berbagai proyek, belajar mandiri, dan eksplorasi berbagai teknologi modern. Cek bagian **My Path** untuk timeline lengkapnya! 🗺️',
+      'Fadlan memiliki berbagai sertifikat di bidang pemrograman dan desain. Cek bagian **Certificates & Awards** di halaman ini untuk melihat selengkapnya! 🏅',
   },
   {
-    keys: ['kontak', 'contact', 'hire', 'collab', 'kolaborasi', 'hubungi', 'email', 'rekrut', 'freelance'],
+    keys: ['perjalanan', 'journey', 'karir', 'pendidikan', 'latar', 'background', 'career', 'path', 'milestone', 'pengalaman', 'experience'],
     answer:
-      'Saya **terbuka untuk peluang baru** — baik freelance, kolaborasi proyek, maupun posisi full-time! 🟢\n\nHubungi saya lewat:\n• **Email:** fadlansyahrullohajib@gmail.com\n• **GitHub:** github.com/Lahnsea\n\nAtau langsung isi form di bagian **Let\'s Collaborate** di halaman ini.',
+      'Perjalanan Fadlan dimulai dari rasa penasaran terhadap teknologi dan desain. Terus berkembang melalui berbagai proyek, belajar mandiri, dan eksplorasi teknologi modern.\n\nCek bagian **My Path** untuk timeline lengkapnya! 🗺️',
   },
   {
-    keys: ['github', 'repo', 'kode', 'source', 'code'],
+    keys: ['kontak', 'contact', 'hire', 'collab', 'kolaborasi', 'hubungi', 'email', 'rekrut', 'freelance', 'kerja sama'],
     answer:
-      'Kode-kode saya bisa dilihat di **GitHub: github.com/Lahnsea** 🐙. Di sana ada semua proyek open-source dan eksperimen saya.',
+      'Fadlan **terbuka untuk peluang baru** 🟢\n\nFreelance, kolaborasi proyek, maupun posisi full-time!\n\n📧 **Email:** fadlansyahrullohajib@gmail.com\n🐙 **GitHub:** github.com/Lahnsea\n\nAtau isi form di bagian **Let\'s Collaborate** di halaman ini.',
   },
   {
-    keys: ['teknologi', 'tech', 'stack', 'tools', 'tool', 'framework', 'bahasa', 'language'],
+    keys: ['github', 'repo', 'kode', 'source', 'code', 'open source'],
     answer:
-      'Tech stack yang saya kuasai:\n\n⚛️ **React, Next.js** · 🎯 **Flutter, Dart** · 🕹️ **Unity, C#** · 🌐 **HTML, CSS, JS** · 🎨 **Tailwind CSS** · 🐍 **Python** · 🐙 **Git & GitHub**',
+      'Kode-kode Fadlan bisa dilihat di:\n\n🐙 **GitHub: github.com/Lahnsea**\n\nDi sana ada semua proyek open-source dan eksperimen yang pernah dibuat.',
   },
   {
-    keys: ['indonesia', 'lokasi', 'dari', 'tinggal', 'location', 'where', 'domisili'],
+    keys: ['teknologi', 'tech', 'stack', 'tools', 'tool', 'framework', 'bahasa', 'language', 'pakai', 'gunakan'],
     answer:
-      'Saya berbasis di **Indonesia** 🇮🇩. Meski begitu, saya terbuka untuk bekerja secara remote di mana saja di dunia!',
+      'Tech stack Fadlan:\n\n⚛️ React · Next.js\n🎯 Flutter · Dart\n🕹️ Unity · C#\n🌐 HTML · CSS · JavaScript\n🎨 Tailwind CSS\n🐍 Python\n🐙 Git & GitHub',
   },
   {
-    keys: ['halo', 'hai', 'hello', 'hi', 'hey', 'selamat', 'salam'],
+    keys: ['indonesia', 'lokasi', 'tinggal', 'location', 'where', 'domisili', 'dari mana', 'asal'],
     answer:
-      'Halo! 👋 Selamat datang di portofolio Fadlan. Saya siap menjawab pertanyaan Anda seputar siapa saya, keahlian, proyek, atau cara menghubungi saya. Silakan tanya apa saja!',
+      'Fadlan berbasis di **Indonesia** 🇮🇩\n\nMeski begitu, terbuka untuk bekerja secara **remote** di mana saja di seluruh dunia!',
   },
   {
-    keys: ['terima kasih', 'makasih', 'thanks', 'thank you', 'thx'],
-    answer: 'Sama-sama! 😊 Jika ada pertanyaan lain seputar Fadlan, jangan ragu untuk bertanya ya.',
+    keys: ['ui', 'ux', 'design', 'desain', 'antarmuka', 'interface', 'tampilan'],
+    answer:
+      'Salah satu passion utama Fadlan adalah **UI/UX Design** — menciptakan antarmuka yang tidak hanya indah secara visual, tetapi juga intuitif dan elegan.\n\nSeperti website portofolio yang sedang kamu lihat ini! ✨',
   },
   {
-    keys: ['ui', 'ux', 'design', 'desain', 'antarmuka', 'interface'],
+    keys: ['umur', 'usia', 'age', 'lahir', 'born', 'berapa tahun'],
     answer:
-      'Salah satu passion utama saya adalah **UI/UX Design** — menciptakan antarmuka yang tidak hanya indah secara visual, tetapi juga intuitif dan elegan. Seperti website portofolio yang sedang Anda lihat ini! ✨',
+      'Fadlan adalah developer muda dari Indonesia yang terus berkembang. Untuk informasi lebih lanjut, jangan ragu hubungi langsung lewat form kontak! 😊',
   },
   {
-    keys: ['umur', 'usia', 'age', 'lahir', 'born'],
+    keys: ['flutter', 'dart', 'mobile', 'aplikasi', 'app', 'android', 'ios'],
     answer:
-      'Fadlan adalah seorang developer muda dari Indonesia yang terus berkembang. Untuk info lebih lanjut, silakan hubungi langsung melalui form kontak! 😊',
+      'Fadlan menggunakan **Flutter & Dart** untuk mobile development.\n\nSalah satu proyeknya adalah **APP-KRL** — aplikasi pelacak kereta real-time yang memanfaatkan Flutter dan Transit API. 🚉',
   },
-];
-
-const SUGGESTIONS = [
-  'Siapa Fadlan?',
-  'Apa keahliannya?',
-  'Proyek apa saja?',
-  'Cara menghubungi?',
-  'Tech stack apa?',
+  {
+    keys: ['unity', 'game', 'gaming', 'c#', 'csharp', '2d', 'platformer'],
+    answer:
+      'Fadlan membuat game menggunakan **Unity** dengan bahasa **C#**.\n\nProyek terbarunya: **Aetheria2D** — game platformer 2D dengan alur cerita yang mendalam. ⚔️',
+  },
+  {
+    keys: ['react', 'next', 'nextjs', 'frontend', 'web', 'website', 'tailwind'],
+    answer:
+      'Fadlan mahir dalam **React** dan **Next.js** untuk frontend, dengan styling menggunakan **Tailwind CSS**.\n\nPortofolio website ini sendiri adalah bukti nyata kemampuannya! 🌐',
+  },
+  {
+    keys: ['terima kasih', 'makasih', 'thanks', 'thank you', 'thx', 'tq'],
+    answer: 'Sama-sama! 😊 Jika ada pertanyaan lain seputar Fadlan atau websitenya, jangan ragu untuk tanya ya!',
+  },
+  {
+    keys: ['bagus', 'keren', 'mantap', 'nice', 'great', 'wow', 'kece', 'amazing', 'awesome', 'cool'],
+    answer: 'Terima kasih! 🙏✨ Semua ini dirancang dengan penuh dedikasi. Apakah ada yang ingin kamu ketahui lebih lanjut?',
+  },
+  {
+    keys: ['python', 'ai', 'machine learning', 'ml', 'data', 'backend'],
+    answer:
+      'Selain frontend dan mobile, Fadlan juga mengeksplorasi **Python**, **AI**, dan **backend development**.\n\nIni menjadi bagian dari perjalanannya menuju fullstack & AI engineering! 🤖',
+  },
 ];
 
 function matchAnswer(input) {
   const lower = input.toLowerCase().trim();
+
+  // Cek frasa multi-kata dulu (prioritas lebih tinggi)
   for (const entry of KB) {
-    if (entry.keys.some((k) => lower.includes(k))) return entry.answer;
+    const multiWord = entry.keys.filter((k) => k.includes(' '));
+    if (multiWord.some((k) => lower.includes(k))) return entry.answer;
   }
-  return 'Maaf, saya tidak menemukan jawaban untuk itu. Coba tanyakan tentang **keahlian**, **proyek**, **pengalaman**, atau cara **menghubungi** Fadlan ya! 😊';
+  // Kemudian cek kata tunggal
+  for (const entry of KB) {
+    const singleWord = entry.keys.filter((k) => !k.includes(' '));
+    if (singleWord.some((k) => lower.includes(k))) return entry.answer;
+  }
+
+  return 'Hmm, saya belum punya jawaban untuk itu. 🤔\n\nCoba tanyakan tentang:\n• Siapa Fadlan\n• Keahlian & tech stack\n• Proyek yang dibuat\n• Cara menghubungi\n• Sertifikat & penghargaan';
 }
 
 function parseMarkdown(text) {
   return text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 }
+
+// ── Suggestions ───────────────────────────────────────────────────────────
+const SUGGESTIONS = [
+  'Siapa Fadlan?',
+  'Proyek apa saja?',
+  'Tech stack apa?',
+  'Cara menghubungi?',
+  'Pengalaman apa?',
+];
 
 // ── Main Component ─────────────────────────────────────────────────────────
 export default function ChatbotNav() {
@@ -95,12 +129,12 @@ export default function ChatbotNav() {
   const [messages, setMessages] = useState([
     {
       role: 'bot',
-      text: 'Halo! 👋 Saya asisten virtual Fadlan.\nTanyakan apa saja tentang saya — keahlian, proyek, pengalaman, atau cara menghubungi!',
+      text: 'Halo! 👋 Saya asisten virtual Fadlan.\nTanyakan apa saja tentang Fadlan, keahlian, proyek, atau cara menghubunginya!',
     },
   ]);
   const [input, setInput] = useState('');
   const [typing, setTyping] = useState(false);
-  const [unread, setUnread] = useState(1); // start with 1 to show badge
+  const [unread, setUnread] = useState(1);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -126,7 +160,7 @@ export default function ChatbotNav() {
 
   const send = (text) => {
     const q = (text || input).trim();
-    if (!q) return;
+    if (!q || typing) return;
     setInput('');
     setMessages((prev) => [...prev, { role: 'user', text: q }]);
     setTyping(true);
@@ -135,14 +169,13 @@ export default function ChatbotNav() {
       setTyping(false);
       setMessages((prev) => [...prev, { role: 'bot', text: answer }]);
       if (!open) setUnread((n) => n + 1);
-    }, 700 + Math.random() * 500);
+    }, 600 + Math.random() * 400);
   };
 
   const handleToggle = () => {
     const nextState = !open;
     setOpen(nextState);
     if (nextState) {
-      // Close side menu when opening chatbot
       window.dispatchEvent(new CustomEvent('close-sidenav'));
     }
   };
@@ -153,7 +186,7 @@ export default function ChatbotNav() {
 
   return (
     <>
-      {/* ── Chatbot Trigger Tab — fixed left edge, 16px below menu button ── */}
+      {/* ── Chatbot Trigger Tab ── */}
       <motion.button
         id="chatbot-nav-trigger"
         aria-label="Open virtual assistant"
@@ -162,12 +195,8 @@ export default function ChatbotNav() {
         animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 2.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="fixed left-0 z-[900] flex flex-col items-center justify-center gap-[4px] w-10 h-14 bg-cream border border-border border-l-0 rounded-r-sm shadow-[2px_0_16px_rgba(86,69,63,0.08)] hover:bg-cream-2 transition-colors duration-300"
-        style={{
-          /* Positioned 24px below the center-aligned menu trigger (which ends at 50% + 28px) */
-          top: 'calc(50% + 52px)',
-        }}
+        style={{ top: 'calc(50% + 52px)' }}
       >
-        {/* Chat icon */}
         <div className="relative">
           <svg
             width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -179,7 +208,6 @@ export default function ChatbotNav() {
             <circle cx="12" cy="10" r="0.5" fill={open ? '#8B6F65' : '#9d8c84'} />
             <circle cx="15" cy="10" r="0.5" fill={open ? '#8B6F65' : '#9d8c84'} />
           </svg>
-          {/* Unread badge */}
           {!open && unread > 0 && (
             <span
               className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 rounded-full flex items-center justify-center text-white"
@@ -189,16 +217,13 @@ export default function ChatbotNav() {
             </span>
           )}
         </div>
-
-        {/* Pulse dot */}
         <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
       </motion.button>
 
-      {/* ── Chat Panel — slides in from left, anchored below trigger ── */}
+      {/* ── Chat Panel ── */}
       <AnimatePresence>
         {open && (
           <>
-            {/* Backdrop (subtle) */}
             <motion.div
               key="chat-backdrop"
               aria-hidden="true"
@@ -210,7 +235,6 @@ export default function ChatbotNav() {
               className="fixed inset-0 z-[850]"
             />
 
-            {/* Panel — fills from below top bar to bottom of viewport */}
             <motion.div
               key="chat-panel"
               initial={{ x: -420, opacity: 0 }}
@@ -218,16 +242,12 @@ export default function ChatbotNav() {
               exit={{ x: -420, opacity: 0 }}
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               className="fixed left-0 z-[860] flex"
-              style={{
-                top: '108px',          /* below announcement (36px) + navbar (72px) */
-                bottom: '0px',
-                width: 'min(380px, 92vw)',
-              }}
+              style={{ top: '108px', bottom: '0px', width: 'min(380px, 92vw)' }}
             >
-              {/* Accent strip (mirrors SideNavbar) */}
+              {/* Accent strip */}
               <div className="w-1 h-full flex-shrink-0 bg-gradient-to-b from-[#e0d0c8] via-[#c9b4ac] to-[#e0d0c8]" />
 
-              {/* Outer museum frame */}
+              {/* Outer frame */}
               <div
                 className="flex flex-col flex-1 h-full"
                 style={{
@@ -241,10 +261,9 @@ export default function ChatbotNav() {
                   className="flex flex-col flex-1 h-full overflow-hidden"
                   style={{ padding: '3px 3px 3px 0', background: 'linear-gradient(145deg, #FAF9F6, #EDEAE5, #F5F3F0)' }}
                 >
-                  {/* Canvas */}
                   <div className="flex flex-col h-full overflow-hidden bg-[#FAF8F5]">
 
-                    {/* ── Header ── */}
+                    {/* Header */}
                     <div
                       className="flex items-center justify-between px-4 py-3 border-b flex-shrink-0"
                       style={{ borderColor: '#E0DAD4', background: 'linear-gradient(135deg, #F5F0EB, #EDE6DC)' }}
@@ -278,7 +297,7 @@ export default function ChatbotNav() {
                       </button>
                     </div>
 
-                    {/* ── Messages ── */}
+                    {/* Messages */}
                     <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 scrollbar-none">
                       {messages.map((msg, i) => (
                         <div key={i} className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -307,7 +326,7 @@ export default function ChatbotNav() {
                             dangerouslySetInnerHTML={{
                               __html: msg.text
                                 .split('\n')
-                                .map((l) => `<span style="display:block;${l===''?'height:6px':'margin-bottom:1px'}">${parseMarkdown(l)}</span>`)
+                                .map((l) => `<span style="display:block;${l === '' ? 'height:6px' : 'margin-bottom:1px'}">${parseMarkdown(l)}</span>`)
                                 .join(''),
                             }}
                           />
@@ -350,7 +369,7 @@ export default function ChatbotNav() {
                       <div ref={bottomRef} />
                     </div>
 
-                    {/* ── Suggestion Chips ── */}
+                    {/* Suggestion Chips */}
                     {messages.length <= 2 && (
                       <div className="px-4 pb-2 flex flex-wrap gap-1.5 border-t border-[#E8E2DC] pt-2.5 flex-shrink-0">
                         {SUGGESTIONS.map((s) => (
@@ -369,7 +388,7 @@ export default function ChatbotNav() {
                     {/* Gold separator */}
                     <div className="mx-4 h-px flex-shrink-0" style={{ background: 'linear-gradient(90deg, transparent, #C9A96E40, transparent)' }} />
 
-                    {/* ── Input Row ── */}
+                    {/* Input Row */}
                     <div className="px-3 py-3 flex gap-2 flex-shrink-0" style={{ background: 'linear-gradient(135deg, #F5F0EB, #EDE6DC)' }}>
                       <input
                         ref={inputRef}
@@ -398,12 +417,13 @@ export default function ChatbotNav() {
                       </button>
                     </div>
 
-                    {/* Footer placard */}
+                    {/* Footer */}
                     <div className="text-center py-1.5 flex-shrink-0" style={{ background: '#EDE6DC' }}>
                       <p className="font-sans" style={{ fontSize: '7px', letterSpacing: '2px', color: '#A89080', textTransform: 'uppercase' }}>
-                        Ask Fadlan · Portfolio Context Only
+                        Ask Fadlan · Portfolio Assistant
                       </p>
                     </div>
+
                   </div>
                 </div>
               </div>
