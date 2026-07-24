@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 const ANNOUNCEMENT_H = 36;
 const NAV_H          = 72;
@@ -14,20 +14,50 @@ const projects = [
   { src: '/portoweb.png',    title: 'Portfolio',  subtitle: 'Web Development',     tags: ['React', 'Tailwind'] },
 ];
 
-const galleryImages = [
-  { src: '/appkrl.png',      alt: 'APP-KRL project' },
-  { src: '/gameproject.png', alt: 'Aetheria2D game' },
-  { src: '/portoweb.png',    alt: 'Portfolio web' },
-  { src: '/appkrl.png',      alt: 'APP-KRL project' },
-  { src: '/gameproject.png', alt: 'Aetheria2D game' },
-  { src: '/portoweb.png',    alt: 'Portfolio web' },
+/* ─── Typing effect hook ─── */
+const TYPING_PHRASES = [
+  'Full-Stack Developer',
+  'UI/UX Enthusiast',
+  'Mobile Developer',
+  'Digital Craftsman',
+  'Game Developer',
 ];
+
+function useTypingEffect(phrases, { typeSpeed = 80, deleteSpeed = 40, pauseMs = 1800 } = {}) {
+  const [displayed, setDisplayed] = useState('');
+  const [phraseIdx, setPhraseIdx] = useState(0);
+  const [charIdx, setCharIdx]   = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = phrases[phraseIdx];
+    let timeout;
+
+    if (!isDeleting && charIdx < current.length) {
+      timeout = setTimeout(() => setCharIdx((c) => c + 1), typeSpeed);
+    } else if (!isDeleting && charIdx === current.length) {
+      timeout = setTimeout(() => setIsDeleting(true), pauseMs);
+    } else if (isDeleting && charIdx > 0) {
+      timeout = setTimeout(() => setCharIdx((c) => c - 1), deleteSpeed);
+    } else if (isDeleting && charIdx === 0) {
+      setIsDeleting(false);
+      setPhraseIdx((i) => (i + 1) % phrases.length);
+    }
+
+    setDisplayed(current.slice(0, charIdx));
+    return () => clearTimeout(timeout);
+  }, [charIdx, isDeleting, phraseIdx, phrases, typeSpeed, deleteSpeed, pauseMs]);
+
+  return displayed;
+}
 
 export default function Hero() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const y      = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const y       = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+
+  const typedText = useTypingEffect(TYPING_PHRASES, { typeSpeed: 75, deleteSpeed: 35, pauseMs: 2000 });
 
   return (
     <section id="hero" ref={ref} className="relative overflow-hidden">
@@ -48,64 +78,99 @@ export default function Hero() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-transparent" />
         </motion.div>
 
-        {/* Headline text — norevo style, massive serif overlaid */}
+        {/* Main content layer */}
         <motion.div
           className="relative z-10 flex-1 flex flex-col justify-end pb-16 md:pb-24"
           style={{ opacity, paddingTop: `${OFFSET}px` }}
         >
           <div className="max-w-[1400px] mx-auto px-6 md:px-10 w-full">
-            {/* Open badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center gap-2 mb-6"
-            >
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-[10px] tracking-[3px] uppercase font-sans text-white/70">
-                Available for opportunities
-              </span>
-            </motion.div>
+            <div className="flex flex-col items-start">
 
-            {/* Giant heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="font-serif font-light text-white leading-[0.9] tracking-tight mb-8"
-              style={{ fontSize: 'clamp(3.5rem, 10vw, 9rem)' }}
-            >
-              Building
-              <br />
-              <em className="italic">Digital</em>
-              <br />
-              Value
-              <br />
-              Every Day.
-            </motion.h1>
+              {/* ── LEFT: Text content ── */}
+              <div className="flex-1">
+                {/* Open badge */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 2.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex items-center gap-2 mb-6"
+                >
+                  <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                  <span className="text-[10px] tracking-[3px] uppercase font-sans text-white/70">
+                    Available for opportunities
+                  </span>
+                </motion.div>
 
-            {/* CTA row */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-wrap items-center gap-6"
-            >
-              <a
-                href="#proyek"
-                className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-sm font-sans font-medium tracking-wide
-                           bg-[#E4C7B8] text-[#56453f] border border-[#E4C7B8]
-                           hover:bg-[#F0DCD2] hover:border-[#F0DCD2] transition-all duration-300"
-              >
-                Explore Work.
-              </a>
-              <a
-                href="#kontak"
-                className="text-sm font-sans text-white/80 hover:text-white transition-colors underline underline-offset-4 decoration-white/40 hover:decoration-white/80 tracking-wide"
-              >
-                Get in Touch →
-              </a>
-            </motion.div>
+                {/* Giant heading */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 2.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                  className="font-serif font-light text-white leading-[0.9] tracking-tight mb-4"
+                  style={{ fontSize: 'clamp(3.5rem, 10vw, 9rem)' }}
+                >
+                  Building
+                  <br />
+                  <em className="italic">Digital</em>
+                  <br />
+                  Value
+                  <br />
+                  Every Day.
+                </motion.h1>
+
+                {/* Typing subtitle */}
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 2.4, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  className="mb-8 min-h-[28px] flex items-center gap-1"
+                >
+                  <span className="font-sans text-base text-white/60 tracking-wide">
+                    {typedText}
+                  </span>
+                  {/* Blinking cursor */}
+                  <span
+                    className="inline-block w-0.5 h-[1.1em] bg-white/60"
+                    style={{ animation: 'blink 1s step-end infinite' }}
+                  />
+                </motion.div>
+
+                {/* CTA row */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 2.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex flex-wrap items-center gap-6"
+                >
+                  <a
+                    href="#showcase"
+                    className="inline-flex items-center gap-2 px-7 py-3 rounded-sm text-sm font-sans font-medium tracking-wide
+                               bg-[#E4C7B8] text-[#56453f] border border-[#E4C7B8]
+                               hover:bg-[#F0DCD2] hover:border-[#F0DCD2] transition-all duration-300"
+                  >
+                    Explore Work.
+                  </a>
+                  <a
+                    href="#kontak"
+                    className="text-sm font-sans text-white/80 hover:text-white transition-colors underline underline-offset-4 decoration-white/40 hover:decoration-white/80 tracking-wide"
+                  >
+                    Get in Touch →
+                  </a>
+                </motion.div>
+
+                {/* Scroll indicator */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 3, duration: 0.8 }}
+                  className="mt-10 flex items-center gap-2"
+                >
+                  <span className="text-[9px] tracking-[3px] uppercase font-sans text-white/35">Scroll</span>
+                  <span className="text-white/35">↓</span>
+                </motion.div>
+              </div>
+
+            </div>
           </div>
         </motion.div>
       </div>
@@ -139,7 +204,7 @@ export default function Hero() {
             {[...projects, ...projects].map((proj, i) => (
               <a
                 key={i}
-                href="#proyek"
+                href="#showcase"
                 className="group flex-shrink-0 w-[240px] md:w-[280px] select-none"
                 draggable="false"
               >
@@ -167,18 +232,12 @@ export default function Hero() {
                         {/* Spotlight hover */}
                         <div
                           className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                          style={{
-                            background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 169, 110, 0.18) 0%, transparent 70%)',
-                          }}
+                          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 169, 110, 0.18) 0%, transparent 70%)' }}
                         />
                         {/* Category badge */}
                         <div
                           className="absolute top-2.5 right-2.5 text-[8px] tracking-[1.5px] uppercase px-2 py-0.5 font-sans border"
-                          style={{
-                            background: 'rgba(201, 169, 110, 0.12)',
-                            borderColor: 'rgba(201, 169, 110, 0.3)',
-                            color: '#C9A96E',
-                          }}
+                          style={{ background: 'rgba(201, 169, 110, 0.12)', borderColor: 'rgba(201, 169, 110, 0.3)', color: '#C9A96E' }}
                         >
                           {proj.subtitle}
                         </div>

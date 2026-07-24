@@ -150,3 +150,21 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* Typing cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* Lanyard swing animation (CSS fallback) */
+@keyframes lanyardSwing {
+  0%   { transform: rotate(-2deg); }
+  50%  { transform: rotate(2deg); }
+  100% { transform: rotate(-2deg); }
+}
+
+.lanyard-swing {
+  animation: lanyardSwing 3s ease-in-out infinite;
+  transform-origin: top center;
+}

@@ -177,6 +177,7 @@ export default function ChatbotNav() {
     setOpen(nextState);
     if (nextState) {
       window.dispatchEvent(new CustomEvent('close-sidenav'));
+      window.dispatchEvent(new CustomEvent('close-profilecard'));
     }
   };
 
@@ -195,7 +196,7 @@ export default function ChatbotNav() {
         animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 2.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="fixed left-0 z-[900] flex flex-col items-center justify-center gap-[4px] w-10 h-14 bg-cream border border-border border-l-0 rounded-r-sm shadow-[2px_0_16px_rgba(86,69,63,0.08)] hover:bg-cream-2 transition-colors duration-300"
-        style={{ top: 'calc(50% + 52px)' }}
+        style={{ top: 'calc(50% + 110px)' }}
       >
         <div className="relative">
           <svg

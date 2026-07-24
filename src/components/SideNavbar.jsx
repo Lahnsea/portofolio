@@ -3,9 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const links = [
   { href: '#tentang',     label: 'About' },
-  { href: '#keahlian',   label: 'Skills' },
-  { href: '#proyek',     label: 'Projects' },
-  { href: '#sertifikat', label: 'Certs' },
+  { href: '#showcase',   label: 'Portfolio' },
   { href: '#perjalanan', label: 'Journey' },
   { href: '#kontak',     label: 'Contact' },
 ];
@@ -72,8 +70,9 @@ export default function SideNavbar() {
 
   const handleOpen = () => {
     setOpen(true);
-    // Automatically close the chatbot when menu is opened
+    // Automatically close the chatbot and profile card when menu is opened
     window.dispatchEvent(new CustomEvent('close-chatbot'));
+    window.dispatchEvent(new CustomEvent('close-profilecard'));
   };
 
   return (

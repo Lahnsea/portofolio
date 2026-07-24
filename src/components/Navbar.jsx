@@ -3,9 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const links = [
   { href: '#tentang',     label: 'About' },
-  { href: '#keahlian',   label: 'Skills' },
-  { href: '#proyek',     label: 'Projects' },
-  { href: '#sertifikat', label: 'Certs' },
+  { href: '#showcase',   label: 'Portfolio' },
   { href: '#perjalanan', label: 'Journey' },
   { href: '#kontak',     label: 'Contact' },
 ];
